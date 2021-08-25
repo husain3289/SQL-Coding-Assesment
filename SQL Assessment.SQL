@@ -1,5 +1,19 @@
 USE[DBNAME]
 GO
+/*
+--**********************EXPLANATION***************************--
+	Created 3 tables
+o	Product
+o	Product Attributes (PRODUCTID from product table as foreign key)
+o	Order (PRODUCTID from product table as foreign key, PRODCUTATTRIBUTESID from Product attributes table as a foreign key)
+o	Audit History table to capture the updates made to the product table
+o	Entity Type table to define table entities.
+
+	Created an update procedure to update/insert records in product and product attributes table.
+	Created a procedure to get all the order item details.
+	Created a bulk insert procedure through which we can read the source file and can insert data into one temp table and then by using cursor we can iterate through each row and can decide whether to insert or to update based on certain condition.
+*/
+
 --*********************************************************************************************************************
 --PRODUCT TABLE
 IF OBJECT_ID (N'PRODUCT', N'U') IS NOT NULL 
